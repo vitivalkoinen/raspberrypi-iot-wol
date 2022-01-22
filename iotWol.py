@@ -1,4 +1,5 @@
-from ast import Try
+import argparse
+from pathlib import Path
 from wakeonlan import send_magic_packet
 import paho.mqtt.client as mqtt
 import json
@@ -15,9 +16,15 @@ def on_message(client, userdata, msg):
     print('Send magic packet: ' + macaddr)
 
 def main():
-    config_file = ConfigJsonFile(CONFIG_FILE_NAME)
-    config = config_file.load()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--dirpath', type=str, default="")
+    args = parser.parse_args()
 
+    file_path = Path(args.dirpath) / CONFIG_FILE_NAME
+
+    config_file = ConfigJsonFile(str(file_path))
+    config = config_file.load()
+    
     client = mqtt.Client()
     client.on_connect = on_connect
     client.on_message = on_message
