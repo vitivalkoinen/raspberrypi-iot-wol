@@ -1,0 +1,7 @@
+{
+    "MQTTHost": "mqtt.beebotte.com",
+    "Port": 8883,
+    "CACerts": "dummy.pem",
+    "Token": "token_dummy",
+    "Topic": "wol/raspberrypi"
+}
