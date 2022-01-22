@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name = 'iotwol',
-    installl_requires=[
+    install_requires=[
         'wakeonlan',
         'paho-mqtt'
     ],
